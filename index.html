@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Raghav Bharadwaj</title>
-  <meta name="description" content="Raghav Bharadwaj — AI and data engineer building agentic systems in production. Four years at Tiger Analytics; MSc AI and Medical Imaging at UCL from September 2026.">
+  <meta name="description" content="Raghav Bharadwaj — I build agentic AI systems that hold up outside the demo. Multi-agent architectures, MCP tool boundaries, production data platforms. MSc AI and Medical Imaging at UCL from September 2026.">
   <meta property="og:title" content="Raghav Bharadwaj">
-  <meta property="og:description" content="AI and data engineer building agentic systems in production.">
+  <meta property="og:description" content="I build agentic AI systems that hold up outside the demo.">
   <meta property="og:type" content="profile">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,7 @@
     --muted:       #5b6572;
     --line:        #dfe4e9;
     --line-soft:   #eaeef1;
+    --edge:        #9aa5b1;
     --accent:      #1e5c7a;
     --accent-ink:  #17495f;
     --accent-soft: #e7eff3;
@@ -37,12 +38,13 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --ground:      #0f1317;
-      --surface:     #151a20;
+      --surface:     #161c23;
       --ink:         #e5eaef;
       --ink-soft:    #c3ccd5;
       --muted:       #8f98a4;
       --line:        #242b33;
       --line-soft:   #1c222a;
+      --edge:        #5a6673;
       --accent:      #6fb6d6;
       --accent-ink:  #8ec8e2;
       --accent-soft: #16232b;
@@ -53,12 +55,13 @@
 
   :root[data-theme="dark"] {
     --ground:      #0f1317;
-    --surface:     #151a20;
+    --surface:     #161c23;
     --ink:         #e5eaef;
     --ink-soft:    #c3ccd5;
     --muted:       #8f98a4;
     --line:        #242b33;
     --line-soft:   #1c222a;
+    --edge:        #5a6673;
     --accent:      #6fb6d6;
     --accent-ink:  #8ec8e2;
     --accent-soft: #16232b;
@@ -80,8 +83,7 @@
 
   a { color: var(--accent-ink); text-decoration: none; }
   a:hover { text-decoration: underline; text-underline-offset: 3px; }
-  a:focus-visible,
-  button:focus-visible {
+  a:focus-visible, button:focus-visible {
     outline: 2px solid var(--focus);
     outline-offset: 3px;
     border-radius: 2px;
@@ -99,7 +101,7 @@
   /* ---------- shell ---------- */
 
   .page {
-    max-width: 1120px;
+    max-width: 1140px;
     margin: 0 auto;
     padding: 0 32px 96px;
     display: grid;
@@ -133,7 +135,7 @@
     font-size: 0.95rem;
     color: var(--ink-soft);
     margin: 8px 0 0;
-    max-width: 24ch;
+    max-width: 25ch;
   }
 
   .status {
@@ -147,12 +149,8 @@
   .status strong { color: var(--ink-soft); font-weight: 500; }
 
   .rail-nav ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 2px;
   }
   .rail-nav a {
     font-family: var(--mono);
@@ -167,11 +165,8 @@
   }
   .rail-nav a::before {
     content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 10px;
-    height: 1px;
+    position: absolute; left: 0; top: 50%;
+    width: 10px; height: 1px;
     background: var(--line);
     transition: width 160ms ease, background-color 160ms ease;
   }
@@ -180,9 +175,7 @@
   .rail-nav a[aria-current="true"]::before { width: 14px; background: var(--accent); }
 
   .rail-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    display: flex; flex-direction: column; gap: 4px;
     font-size: 0.85rem;
   }
 
@@ -190,7 +183,7 @@
 
   .content {
     padding: 72px 0 0;
-    max-width: 660px;
+    max-width: 720px;
     display: flex;
     flex-direction: column;
     gap: 68px;
@@ -213,224 +206,204 @@
 
   .lede {
     font-family: var(--serif);
-    font-size: 1.32rem;
-    line-height: 1.5;
+    font-size: 1.34rem;
+    line-height: 1.48;
     font-weight: 500;
     letter-spacing: -0.008em;
     text-wrap: balance;
-    margin-bottom: 20px;
     color: var(--ink);
+    margin-bottom: 20px;
   }
 
   .prose {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    display: flex; flex-direction: column; gap: 16px;
     color: var(--ink-soft);
-    max-width: 62ch;
+    max-width: 63ch;
   }
 
-  /* ---------- timeline ---------- */
+  /* ---------- case studies ---------- */
 
-  .timeline {
-    list-style: none;
-    margin: 0;
-    padding: 0 0 0 24px;
-    border-left: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    gap: 34px;
-  }
-  .timeline > li { position: relative; }
-  .timeline > li::before {
-    content: "";
-    position: absolute;
-    left: -29px;
-    top: 8px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--ground);
-    border: 1px solid var(--line);
-  }
-  .timeline > li:first-child::before {
-    background: var(--accent);
-    border-color: var(--accent);
-  }
+  .case { display: flex; flex-direction: column; gap: 18px; }
 
-  .when {
-    font-family: var(--mono);
-    font-size: 0.735rem;
-    letter-spacing: 0.04em;
-    font-variant-numeric: tabular-nums;
-    color: var(--muted);
-    display: block;
-    margin-bottom: 5px;
-  }
-  .job-title {
+  .case-head h3 {
     font-family: var(--serif);
-    font-size: 1.08rem;
-    font-weight: 600;
-    margin: 0;
-    letter-spacing: -0.005em;
-  }
-  .org {
-    font-size: 0.87rem;
-    color: var(--muted);
-    margin: 2px 0 10px;
-  }
-  .job-note {
-    color: var(--ink-soft);
-    font-size: 0.945rem;
-    margin: 0;
-    max-width: 60ch;
-  }
-
-  /* ---------- projects ---------- */
-
-  .projects {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-  .project {
-    padding-top: 26px;
-    border-top: 1px solid var(--line-soft);
-  }
-  .project:first-child { padding-top: 0; border-top: 0; }
-
-  .project h3 {
-    font-family: var(--serif);
-    font-size: 1.12rem;
+    font-size: 1.24rem;
     font-weight: 600;
     margin: 0 0 4px;
-    letter-spacing: -0.005em;
+    letter-spacing: -0.008em;
   }
-  .project-meta {
+  .case-meta {
     font-family: var(--mono);
     font-size: 0.715rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--muted);
-    margin: 0 0 12px;
+    margin: 0;
   }
-  .project p.desc {
-    color: var(--ink-soft);
-    font-size: 0.955rem;
-    margin: 0 0 14px;
-    max-width: 60ch;
+
+  .case p { color: var(--ink-soft); max-width: 63ch; }
+  .case p + p { margin-top: 14px; }
+
+  .sub {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 8px;
   }
 
   .outcomes {
-    list-style: none;
-    margin: 0 0 14px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 8px;
   }
   .outcomes li {
-    font-size: 0.9rem;
+    font-size: 0.94rem;
     color: var(--ink-soft);
     padding-left: 18px;
     position: relative;
-    max-width: 60ch;
+    max-width: 62ch;
   }
   .outcomes li::before {
     content: "";
-    position: absolute;
-    left: 0;
-    top: 0.62em;
-    width: 7px;
-    height: 1px;
+    position: absolute; left: 0; top: 0.62em;
+    width: 7px; height: 1px;
     background: var(--accent);
   }
   .outcomes b {
-    font-weight: 600;
-    color: var(--ink);
+    font-weight: 600; color: var(--ink);
     font-variant-numeric: tabular-nums;
   }
-  .outcomes code {
-    font-family: var(--mono);
-    font-size: 0.85em;
-    color: var(--ink);
-  }
+  .outcomes code { font-family: var(--mono); font-size: 0.85em; color: var(--ink); }
 
-  .stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; }
   .stack span {
     font-family: var(--mono);
     font-size: 0.7rem;
-    letter-spacing: 0.02em;
     color: var(--ink-soft);
     background: var(--accent-soft);
     padding: 3px 8px;
     border-radius: 2px;
   }
 
-  /* ---------- research ---------- */
+  /* ---------- figure / diagram ---------- */
 
-  .paper {
-    border-left: 2px solid var(--accent);
-    padding-left: 18px;
+  figure {
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--surface);
+    padding: 22px 20px 16px;
+    overflow-x: auto;
   }
-  .paper .citation {
+  .diagram {
+    display: block;
+    width: 100%;
+    min-width: 560px;
+    height: auto;
+  }
+  figcaption {
+    font-size: 0.845rem;
+    color: var(--muted);
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line-soft);
+    max-width: 68ch;
+  }
+
+  .d-node      { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+  .d-node-mcp  { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.1; }
+  .d-node-data { fill: none; stroke: var(--edge); stroke-width: 1; stroke-dasharray: 4 3; }
+  .d-edge      { stroke: var(--edge); stroke-width: 1.2; fill: none; }
+  .d-arrow     { fill: var(--edge); }
+  .d-title     { fill: var(--ink); font-family: var(--sans); font-size: 12.5px; font-weight: 600; }
+  .d-sub       { fill: var(--muted); font-family: var(--mono); font-size: 10px; }
+  .d-edge-label{ fill: var(--muted); font-family: var(--mono); font-size: 9.5px; }
+  .d-entry     { fill: var(--ink-soft); font-family: var(--mono); font-size: 10.5px; }
+
+  /* ---------- compact lists ---------- */
+
+  .shipped { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .shipped li {
+    padding: 16px 0;
+    border-top: 1px solid var(--line-soft);
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 6px 20px;
+    align-items: baseline;
+  }
+  .shipped li:first-child { border-top: 0; padding-top: 0; }
+  .shipped h4 {
     font-family: var(--serif);
     font-size: 1.02rem;
-    line-height: 1.5;
-    margin: 0 0 8px;
-    max-width: 58ch;
+    font-weight: 600;
+    margin: 0;
   }
+  .shipped p { font-size: 0.92rem; color: var(--ink-soft); max-width: 56ch; }
+
+  .roles { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .roles li {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 20px;
+    align-items: baseline;
+    padding: 11px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .roles li:first-child { border-top: 0; }
+  .roles .when {
+    font-family: var(--mono);
+    font-size: 0.735rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+  }
+  .roles .what { font-size: 0.95rem; }
+  .roles .what b { font-weight: 600; color: var(--ink); }
+  .roles .what span { color: var(--muted); }
+
+  /* ---------- research ---------- */
+
+  .paper { border-left: 2px solid var(--accent); padding-left: 18px; }
   .paper .venue {
     font-family: var(--mono);
     font-size: 0.715rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--muted);
-    margin: 0 0 12px;
+    margin: 0 0 10px;
   }
+  .paper .citation {
+    font-family: var(--serif);
+    font-size: 1.04rem;
+    line-height: 1.5;
+    margin: 0 0 10px;
+    max-width: 58ch;
+  }
+  .paper .gloss { font-size: 0.94rem; color: var(--ink-soft); max-width: 60ch; margin: 0; }
 
-  /* ---------- skills + education rows ---------- */
-
-  .rows {
-    display: grid;
-    grid-template-columns: 148px minmax(0, 1fr);
-    gap: 14px 20px;
-    align-items: baseline;
-  }
-  .rows dt {
-    font-family: var(--mono);
-    font-size: 0.715rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding-top: 2px;
-  }
-  .rows dd {
-    margin: 0;
-    font-size: 0.945rem;
-    color: var(--ink-soft);
-  }
+  /* ---------- education + contact ---------- */
 
   .degree { margin-bottom: 22px; }
   .degree:last-child { margin-bottom: 0; }
+  .degree .when {
+    font-family: var(--mono);
+    font-size: 0.735rem;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px;
+  }
   .degree h3 {
     font-family: var(--serif);
     font-size: 1.05rem;
     font-weight: 600;
     margin: 0 0 2px;
   }
-  .degree .org { margin-bottom: 4px; }
+  .degree .org { font-size: 0.87rem; color: var(--muted); margin: 0 0 4px; }
   .degree .detail { font-size: 0.9rem; color: var(--ink-soft); margin: 0; }
-
-  /* ---------- contact ---------- */
 
   .contact-list {
     display: grid;
-    grid-template-columns: 148px minmax(0, 1fr);
+    grid-template-columns: 130px minmax(0, 1fr);
     gap: 12px 20px;
     align-items: baseline;
     margin: 0;
@@ -443,14 +416,10 @@
     color: var(--muted);
   }
   .contact-list dd { margin: 0; font-size: 0.95rem; }
-  .contact-list .note {
-    font-size: 0.82rem;
-    color: var(--muted);
-    display: block;
-  }
+  .contact-list .note { font-size: 0.82rem; color: var(--muted); display: block; }
 
   footer {
-    margin-top: 20px;
+    margin-top: 22px;
     padding-top: 22px;
     border-top: 1px solid var(--line);
     font-family: var(--mono);
@@ -467,22 +436,19 @@
       gap: 0;
       padding: 0 24px 72px;
     }
-    .rail {
-      position: static;
-      padding: 56px 0 0;
-      gap: 22px;
-    }
+    .rail { position: static; padding: 56px 0 0; gap: 22px; }
     .rail-nav { display: none; }
     .content { padding-top: 48px; gap: 56px; max-width: none; }
     .name { font-size: 1.75rem; }
     .role { max-width: 46ch; }
-    .status { font-size: 0.76rem; }
+    .shipped li, .roles li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    figure { padding: 16px 14px 12px; }
   }
 
   @media (max-width: 560px) {
     body { font-size: 15.5px; }
-    .rows, .contact-list { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-    .rows dt, .contact-list dt { padding-top: 10px; }
+    .contact-list { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .contact-list dt { padding-top: 10px; }
     .lede { font-size: 1.18rem; }
   }
 
@@ -500,7 +466,7 @@
   <header class="rail">
     <div>
       <h1 class="name">Raghav Bharadwaj</h1>
-      <p class="role">AI &amp; data engineer — four years building agentic systems that run in production.</p>
+      <p class="role">I build agentic AI systems that hold up outside the demo.</p>
     </div>
 
     <p class="status">
@@ -512,10 +478,12 @@
     <nav class="rail-nav" aria-label="Sections">
       <ol>
         <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#assistant">Multi-agent assistant</a></li>
+        <li><a href="#structuring">Data structuring</a></li>
+        <li><a href="#shipped">Also shipped</a></li>
         <li><a href="#research">Research</a></li>
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#toolkit">Toolkit</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ol>
@@ -532,104 +500,162 @@
     <section id="about">
       <h2 class="eyebrow">About</h2>
       <div class="prose">
-        <p class="lede">I build the unglamorous layer that turns a generative-AI demo into a system an enterprise can actually depend on.</p>
-        <p>Since 2022 I have worked across the full path from prototype to production: agentic pipelines that map and restructure messy enterprise data, the FastAPI services that expose them, the CI/CD that ships them, and the load tests that prove they hold. Most of that work has been for large CPG and enterprise clients, where the measure of success is not a benchmark score but whether an analyst's week gets shorter.</p>
-        <p>My background is quantitative before it was computational — a chemical engineering degree from IIT Patna and a published stochastic-optimisation model. From September 2026 I am in London for an MSc in AI and Medical Imaging at UCL, pointing that systems experience at clinical problems.</p>
+        <p class="lede">Four years of shipping production AI taught me what separates a system that demos well from one people actually use. I'm pointing that at healthcare next.</p>
+        <p>Most of my work has been agentic: supervisors that route a question to the right sub-agent, retrieval over enterprise corpora that were never built to be retrieved from, and the service, deployment and load-testing layer underneath that decides whether any of it survives real traffic. The model has rarely been the hard part.</p>
+        <p>From September 2026 I'm at UCL for an MSc in AI and Medical Imaging. I want to understand how to work with imaging datasets properly and build models that are genuinely useful for disease detection — the same engineering discipline, aimed at a harder domain.</p>
       </div>
     </section>
 
-    <section id="experience">
-      <h2 class="eyebrow">Experience</h2>
-      <ol class="timeline">
-        <li>
-          <span class="when">Jan 2026 — Present</span>
-          <h3 class="job-title">Lead, Data &amp; AI Labs</h3>
-          <p class="org">Tiger Analytics · Bengaluru</p>
-          <p class="job-note">Extending the agentic data structuring platform to nested and semi-structured formats, and adding LLM-guided recommendations that data modelling teams act on directly.</p>
-        </li>
-        <li>
-          <span class="when">Jul 2024 — Jan 2026</span>
-          <h3 class="job-title">Data Engineer</h3>
-          <p class="org">Tiger Analytics · Bengaluru</p>
-          <p class="job-note">Led the agentic data mapping and wrangling solution for a CPG client, and owned the eleven production FastAPI services that put it in front of users.</p>
-        </li>
-        <li>
-          <span class="when">Jul 2023 — Jul 2024</span>
-          <h3 class="job-title">Senior Software Engineer</h3>
-          <p class="org">Tiger Analytics · Bengaluru</p>
-          <p class="job-note">Built LogInsight — conversational Q&amp;A over log data, a historical analysis dashboard, and generative-AI insights drawn from error logs.</p>
-        </li>
-        <li>
-          <span class="when">Jan 2023 — Jul 2023</span>
-          <h3 class="job-title">Software Engineer</h3>
-          <p class="org">Tiger Analytics · Bengaluru</p>
-          <p class="job-note">Shipped Chat2Data and Chat2Viz for conversational querying and visualisation, plus FinOps dashboards for AWS cost and usage analysis.</p>
-        </li>
-        <li>
-          <span class="when">Jul 2022 — Jan 2023</span>
-          <h3 class="job-title">Analyst — Training Programme</h3>
-          <p class="org">Tiger Analytics · Bengaluru</p>
-          <p class="job-note">Structured training in Python, SQL and machine learning fundamentals.</p>
-        </li>
-      </ol>
+    <section id="assistant">
+      <h2 class="eyebrow">Case study — current work</h2>
+      <div class="case">
+
+        <div class="case-head">
+          <h3>Multi-agent enterprise assistant</h3>
+          <p class="case-meta">In progress · 2026 · Architecture &amp; implementation</p>
+        </div>
+
+        <p>Three separate questions arrive at an internal help desk in the same sentence: <em>what does the policy document say</em>, <em>has anyone hit this error before</em>, and <em>what do the numbers actually show</em>. Each needs a different retrieval strategy, and a single RAG pipeline over one index answers all three badly.</p>
+
+        <p>So the assistant routes instead of retrieving. A supervisor classifies intent and hands the question to a sub-agent; every sub-agent reaches its data through an MCP server rather than through embedded client code. That boundary is the design decision the whole thing rests on — tools stay swappable, and a new data source becomes a new MCP server rather than a change to agent logic.</p>
+
+        <figure>
+          <svg class="diagram" viewBox="0 0 760 400" role="img"
+               aria-label="A user question enters a supervisor, which routes on intent to one of two sub-agents. The Knowledge Agent calls the Knowledge Assistant MCP and the Support Assistant MCP; the Data Discovery Agent calls the Databricks Genie MCP. Each MCP server reads from its own store: a SharePoint vector index, a resolved-ticket index in Mosaic AI, and governed tables in Unity Catalog.">
+            <defs>
+              <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+                <polygon class="d-arrow" points="0,1 8,4 0,7"></polygon>
+              </marker>
+            </defs>
+
+            <text class="d-entry" x="425" y="14" text-anchor="middle">user question</text>
+            <line class="d-edge" x1="425" y1="22" x2="425" y2="44" marker-end="url(#ar)"></line>
+
+            <rect class="d-node" x="325" y="48" width="200" height="46" rx="3"></rect>
+            <text class="d-title" x="425" y="68" text-anchor="middle">Supervisor</text>
+            <text class="d-sub" x="425" y="83" text-anchor="middle">classifies · routes</text>
+
+            <polyline class="d-edge" points="425,94 425,118 235,118 235,138" marker-end="url(#ar)"></polyline>
+            <polyline class="d-edge" points="425,118 615,118 615,138" marker-end="url(#ar)"></polyline>
+            <text class="d-edge-label" x="228" y="133" text-anchor="end">knowledge intent</text>
+            <text class="d-edge-label" x="622" y="133" text-anchor="start">data intent</text>
+
+            <rect class="d-node" x="125" y="142" width="220" height="46" rx="3"></rect>
+            <text class="d-title" x="235" y="162" text-anchor="middle">Knowledge Agent</text>
+            <text class="d-sub" x="235" y="177" text-anchor="middle">documents + tickets</text>
+
+            <rect class="d-node" x="505" y="142" width="220" height="46" rx="3"></rect>
+            <text class="d-title" x="615" y="162" text-anchor="middle">Data Discovery Agent</text>
+            <text class="d-sub" x="615" y="177" text-anchor="middle">tabular questions</text>
+
+            <polyline class="d-edge" points="235,188 235,212 125,212 125,232" marker-end="url(#ar)"></polyline>
+            <polyline class="d-edge" points="235,212 345,212 345,232" marker-end="url(#ar)"></polyline>
+            <line class="d-edge" x1="615" y1="188" x2="615" y2="232" marker-end="url(#ar)"></line>
+            <text class="d-edge-label" x="118" y="227" text-anchor="end">docs</text>
+            <text class="d-edge-label" x="352" y="227" text-anchor="start">tickets</text>
+            <text class="d-edge-label" x="622" y="212" text-anchor="start">tables</text>
+
+            <rect class="d-node-mcp" x="30" y="236" width="190" height="46" rx="3"></rect>
+            <text class="d-title" x="125" y="256" text-anchor="middle">Knowledge Asst. MCP</text>
+            <text class="d-sub" x="125" y="271" text-anchor="middle">MCP server</text>
+
+            <rect class="d-node-mcp" x="250" y="236" width="190" height="46" rx="3"></rect>
+            <text class="d-title" x="345" y="256" text-anchor="middle">Support Asst. MCP</text>
+            <text class="d-sub" x="345" y="271" text-anchor="middle">MCP server</text>
+
+            <rect class="d-node-mcp" x="520" y="236" width="190" height="46" rx="3"></rect>
+            <text class="d-title" x="615" y="256" text-anchor="middle">Databricks Genie MCP</text>
+            <text class="d-sub" x="615" y="271" text-anchor="middle">MCP server</text>
+
+            <line class="d-edge" x1="125" y1="282" x2="125" y2="326" marker-end="url(#ar)"></line>
+            <line class="d-edge" x1="345" y1="282" x2="345" y2="326" marker-end="url(#ar)"></line>
+            <line class="d-edge" x1="615" y1="282" x2="615" y2="326" marker-end="url(#ar)"></line>
+            <text class="d-edge-label" x="132" y="308" text-anchor="start">vector search</text>
+            <text class="d-edge-label" x="352" y="308" text-anchor="start">vector search</text>
+            <text class="d-edge-label" x="622" y="308" text-anchor="start">generated SQL</text>
+
+            <rect class="d-node-data" x="30" y="330" width="190" height="46" rx="3"></rect>
+            <text class="d-title" x="125" y="350" text-anchor="middle">SharePoint corpus</text>
+            <text class="d-sub" x="125" y="365" text-anchor="middle">vector index</text>
+
+            <rect class="d-node-data" x="250" y="330" width="190" height="46" rx="3"></rect>
+            <text class="d-title" x="345" y="350" text-anchor="middle">Resolved tickets</text>
+            <text class="d-sub" x="345" y="365" text-anchor="middle">Mosaic AI index</text>
+
+            <rect class="d-node-data" x="520" y="330" width="190" height="46" rx="3"></rect>
+            <text class="d-title" x="615" y="350" text-anchor="middle">Unity Catalog</text>
+            <text class="d-sub" x="615" y="365" text-anchor="middle">governed tables</text>
+          </svg>
+          <figcaption>How a question moves through the assistant. The supervisor routes on intent; each sub-agent reaches its data only through an MCP server (filled), and the stores themselves (dashed) sit behind that boundary rather than inside the agents.</figcaption>
+        </figure>
+
+        <div>
+          <p class="sub">What the pieces do</p>
+          <ul class="outcomes">
+            <li><b>Knowledge Agent</b> — answers from written material, calling two MCP servers depending on whether the question is about documented policy or a problem someone has already solved</li>
+            <li><b>Knowledge Assistant MCP</b> — semantic retrieval over a vector database holding a full dump of the company's SharePoint documents</li>
+            <li><b>Support Assistant MCP</b> — retrieval over historically resolved support tickets, pre-processed to pull out root cause, resolution and problem statement, then indexed in Databricks Mosaic AI. Unstructured ticket threads become a searchable body of prior fixes</li>
+            <li><b>Data Discovery Agent</b> — answers quantitative questions against governed tables in Unity Catalog, using the Databricks Genie MCP to turn the question into a query</li>
+          </ul>
+        </div>
+
+        <div class="stack"><span>MCP</span><span>Supervisor routing</span><span>Databricks Mosaic AI</span><span>Genie</span><span>Unity Catalog</span><span>Vector search</span><span>Python</span></div>
+      </div>
     </section>
 
-    <section id="projects">
-      <h2 class="eyebrow">Selected work</h2>
-      <div class="projects">
+    <section id="structuring">
+      <h2 class="eyebrow">Case study — enterprise platform</h2>
+      <div class="case">
 
-        <article class="project">
+        <div class="case-head">
           <h3>Agentic data structuring platform</h3>
-          <p class="project-meta">CPG client · 2024 — present · Lead developer</p>
-          <p class="desc">Enterprise data arrives inconsistent, deeply nested and undocumented, and mapping it to a usable schema is manual, slow work. I led development of an agentic system that reads the source, proposes the structure, and hands modelling teams a recommendation they can accept or correct.</p>
+          <p class="case-meta">CPG client · 2024 — 2026 · Led development</p>
+        </div>
+
+        <p>Enterprise source data arrives inconsistent, deeply nested and undocumented. Mapping it into a usable schema is manual work that scales with the number of sources, and it is the step that quietly sets the pace of every downstream analysis.</p>
+
+        <p>The platform reads the source, proposes a structure, and gives the data modelling team a recommendation to accept or correct — rather than trying to be right unattended. Keeping a human at the decision point is what made it adoptable; the agents do the reading, the modellers keep the judgement.</p>
+
+        <div>
+          <p class="sub">Outcomes</p>
           <ul class="outcomes">
             <li>LangGraph architecture with in-memory vector stores cut manual data processing by <b>70%</b></li>
             <li>Data consistency and accuracy improved <b>50%</b>, shortening stakeholder decision cycles</li>
             <li>Extended to complex nested <code>.txt</code>, <code>.json</code> and <code>.csv</code> sources, widening coverage across enterprise systems</li>
-            <li>Shipped an interactive application so modelling teams review and act on recommendations in place</li>
+            <li>LLM-based recommendations added for modelling decisions on nested structures, with an interactive application so teams act on them in place</li>
           </ul>
-          <div class="stack"><span>LangGraph</span><span>LangChain</span><span>Vector search</span><span>Python</span><span>Azure DevOps</span></div>
-        </article>
+        </div>
 
-        <article class="project">
-          <h3>Production API layer — 11 FastAPI microservices</h3>
-          <p class="project-meta">CPG client · 2024 — 2026 · Design, build, test</p>
-          <p class="desc">The agentic engine only mattered once client platforms could call it reliably. I designed and maintained the service layer around it, along with the HLD/LLD documentation, testing and release process that kept two major releases stable.</p>
+        <div>
+          <p class="sub">Getting it into production</p>
           <ul class="outcomes">
-            <li><b>11</b> production-grade services with versioning, OAuth 2.0, modular design, structured logging and exception handling</li>
-            <li>Two major releases delivered with high availability and seamless client integration</li>
-            <li>Functional and integration testing in Postman; concurrency and throughput validated with JMeter</li>
-            <li>Client satisfaction scores up <b>40%</b> on the back of stable delivery</li>
+            <li><b>11</b> FastAPI microservices carrying the engine into client platforms — versioning, OAuth 2.0, modular design, structured logging and exception handling as defaults</li>
+            <li>Two major releases delivered with high availability; functional and integration testing in Postman, concurrency and throughput validated with JMeter</li>
+            <li>Automated cloud deployment through Azure DevOps CI/CD</li>
+            <li>Client satisfaction up <b>40%</b> on the back of stable delivery</li>
           </ul>
-          <div class="stack"><span>FastAPI</span><span>OAuth 2.0</span><span>Postman</span><span>JMeter</span><span>CI/CD</span></div>
-        </article>
+        </div>
 
-        <article class="project">
-          <h3>LogInsight — conversational log analytics</h3>
-          <p class="project-meta">Log analytics platform · 2023 — 2024</p>
-          <p class="desc">Engineers were reading raw logs to find out what broke. LogInsight let them ask instead, and surfaced the answer with a suggested fix attached.</p>
-          <ul class="outcomes">
-            <li>Chat Q&amp;A over log data, so error context is retrieved by question rather than by grep</li>
-            <li>Streamlit dashboard for historical analysis and real-time operational trends</li>
-            <li>Active log monitoring reduced issue resolution time by <b>50%</b></li>
-            <li>Generative-AI layer that reads error logs and proposes remediation steps</li>
-          </ul>
-          <div class="stack"><span>Streamlit</span><span>LLM integration</span><span>Python</span><span>Semantic search</span></div>
-        </article>
-
-        <article class="project">
-          <h3>Chat2Data, Chat2Viz &amp; FinOps dashboards</h3>
-          <p class="project-meta">Internal products · 2023</p>
-          <p class="desc">An early pass at the same idea that runs through everything since: let people ask a question in plain language and get data — or a chart — back.</p>
-          <ul class="outcomes">
-            <li>Chat2Data for conversational querying, removing a manual extraction step</li>
-            <li>Chat2Viz generating interactive Plotly visualisations from natural-language input</li>
-            <li>FinOps dashboards analysing EC2 and AWS cost and usage for optimisation decisions</li>
-          </ul>
-          <div class="stack"><span>Plotly</span><span>AWS</span><span>SQL</span><span>Python</span></div>
-        </article>
-
+        <div class="stack"><span>LangGraph</span><span>LangChain</span><span>FastAPI</span><span>OAuth 2.0</span><span>Azure DevOps</span><span>JMeter</span></div>
       </div>
+    </section>
+
+    <section id="shipped">
+      <h2 class="eyebrow">Also shipped</h2>
+      <ul class="shipped">
+        <li>
+          <h4>LogInsight</h4>
+          <p>Conversational Q&amp;A over log data with a Streamlit dashboard for historical analysis, plus a generative layer that reads error logs and proposes fixes. Active monitoring cut issue resolution time by 50%.</p>
+        </li>
+        <li>
+          <h4>Chat2Data · Chat2Viz</h4>
+          <p>Natural-language querying of data, and generation of interactive Plotly visualisations from the same input. An early pass at the idea that runs through everything since.</p>
+        </li>
+        <li>
+          <h4>FinOps dashboards</h4>
+          <p>EC2 and AWS cost and usage analysis, built so both technical and non-technical stakeholders could act on the same numbers.</p>
+        </li>
+      </ul>
     </section>
 
     <section id="research">
@@ -637,41 +663,39 @@
       <div class="paper">
         <p class="venue">Chemical Engineering Transactions · Vol. 94 · 2022 · Peer-reviewed</p>
         <p class="citation">Bharadwaj, R., &amp; Chaturvedi, N. D. — <em>Maximizing Profit Using Benders Decomposition in Two-Stage Stochastic Water Distribution Network</em>, 799–804.</p>
-        <p class="job-note">Built a two-stage stochastic optimisation model for water distribution under uncertainty and compared it against a Benders Decomposition formulation. Both reached identical optimal profit; the decomposed model reached it far more efficiently.</p>
+        <p class="gloss">A two-stage stochastic optimisation model for water distribution under uncertainty, compared against a Benders Decomposition formulation. Both reached identical optimal profit; the decomposed model reached it far more efficiently.</p>
         <p style="margin-top:12px"><a href="https://doi.org/10.3303/CET2294133" target="_blank" rel="noopener">DOI: 10.3303/CET2294133 →</a></p>
       </div>
     </section>
 
-    <section id="skills">
-      <h2 class="eyebrow">Skills</h2>
-      <dl class="rows">
-        <dt>Languages</dt>
-        <dd>Python, SQL</dd>
+    <section id="experience">
+      <h2 class="eyebrow">Experience</h2>
+      <ul class="roles">
+        <li>
+          <span class="when">Jan 2026 —</span>
+          <span class="what"><b>Lead, Data &amp; AI Labs</b><br><span>Tiger Analytics · Bengaluru</span></span>
+        </li>
+        <li>
+          <span class="when">Jul 2024 — Jan 2026</span>
+          <span class="what"><b>Data Engineer</b><br><span>Tiger Analytics · Bengaluru</span></span>
+        </li>
+        <li>
+          <span class="when">Jul 2023 — Jul 2024</span>
+          <span class="what"><b>Senior Software Engineer</b><br><span>Tiger Analytics · Bengaluru</span></span>
+        </li>
+        <li>
+          <span class="when">Jul 2022 — Jul 2023</span>
+          <span class="what"><b>Software Engineer</b><br><span>Tiger Analytics · Bengaluru</span></span>
+        </li>
+      </ul>
+    </section>
 
-        <dt>AI &amp; agents</dt>
-        <dd>LangGraph, LangChain, agentic architectures, generative models (GPT, Llama, GANs, VAEs)</dd>
-
-        <dt>NLP</dt>
-        <dd>Semantic search, text generation, sentiment analysis</dd>
-
-        <dt>Services</dt>
-        <dd>FastAPI, OAuth 2.0, REST versioning, structured logging, microservice design</dd>
-
-        <dt>Data stores</dt>
-        <dd>Pinecone, FAISS, Azure SQL, MySQL, SQLite</dd>
-
-        <dt>Cloud &amp; data</dt>
-        <dd>Azure, GCP, Databricks, Azure DevOps CI/CD</dd>
-
-        <dt>Analysis</dt>
-        <dd>NumPy, Pandas, Plotly, Streamlit</dd>
-
-        <dt>Tooling</dt>
-        <dd>Git, Azure DevOps Repos, VS Code, Postman, JMeter</dd>
-
-        <dt>Spoken</dt>
-        <dd>English — IELTS 7.5 (C1 Academic) · German — beginner</dd>
-      </dl>
+    <section id="toolkit">
+      <h2 class="eyebrow">Toolkit</h2>
+      <div class="prose">
+        <p>Python throughout. LangGraph and LangChain for orchestration, MCP for tool boundaries. FastAPI for services, with versioning, OAuth 2.0 and structured logging treated as defaults rather than hardening added later. Retrieval on Pinecone, FAISS and Databricks Mosaic AI; Azure, GCP and Databricks underneath; Azure DevOps for CI/CD.</p>
+        <p>Postman and JMeter get their own sentence, because a service that has not been load-tested is not finished.</p>
+      </div>
     </section>
 
     <section id="education">
@@ -687,7 +711,7 @@
         <span class="when">2018 — 2022</span>
         <h3>B.Tech, Chemical Engineering</h3>
         <p class="org">Indian Institute of Technology Patna</p>
-        <p class="detail">CPI 7.93 / 10 · Degree conferred December 2022 · Final-year research led to a peer-reviewed publication</p>
+        <p class="detail">CPI 7.93 / 10 · Degree conferred December 2022 · Final-year research led to the publication above</p>
       </div>
     </section>
 
@@ -704,7 +728,7 @@
         <dd>Bengaluru, India — relocating to London, UK in September 2026</dd>
 
         <!-- DEPLOY NOTE: to serve the CV directly, drop your PDF beside this file as cv.pdf
-             and replace the mailto link below with:
+             and replace the two lines below with:
              <a href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a> -->
         <dt>CV</dt>
         <dd>
@@ -713,7 +737,7 @@
         </dd>
       </dl>
 
-      <footer>Open to AI / data engineering roles in London from September 2026.</footer>
+      <footer>Open to AI / ML engineering roles in London from September 2026.</footer>
     </section>
 
   </main>
@@ -724,11 +748,8 @@
     var links = Array.prototype.slice.call(document.querySelectorAll('.rail-nav a'));
     if (!links.length || !('IntersectionObserver' in window)) return;
 
-    var byId = {};
-    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
-
-    var visible = {};
     var order = links.map(function (a) { return a.getAttribute('href').slice(1); });
+    var visible = {};
 
     function paint() {
       var current = null;
@@ -736,9 +757,8 @@
         if (visible[order[i]]) { current = order[i]; break; }
       }
       links.forEach(function (a) {
-        var id = a.getAttribute('href').slice(1);
-        if (id === current) { a.setAttribute('aria-current', 'true'); }
-        else { a.removeAttribute('aria-current'); }
+        if (a.getAttribute('href').slice(1) === current) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
       });
     }
 
