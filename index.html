@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Raghav Bharadwaj</title>
+  <meta name="description" content="Raghav Bharadwaj — AI and data engineer building agentic systems in production. Four years at Tiger Analytics; MSc AI and Medical Imaging at UCL from September 2026.">
+  <meta property="og:title" content="Raghav Bharadwaj">
+  <meta property="og:description" content="AI and data engineer building agentic systems in production.">
+  <meta property="og:type" content="profile">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+</head>
+<body>
+<style>
+  :root {
+    --ground:      #f6f8f9;
+    --surface:     #ffffff;
+    --ink:         #13181d;
+    --ink-soft:    #3a434e;
+    --muted:       #5b6572;
+    --line:        #dfe4e9;
+    --line-soft:   #eaeef1;
+    --accent:      #1e5c7a;
+    --accent-ink:  #17495f;
+    --accent-soft: #e7eff3;
+    --focus:       #1e5c7a;
+
+    --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #0f1317;
+      --surface:     #151a20;
+      --ink:         #e5eaef;
+      --ink-soft:    #c3ccd5;
+      --muted:       #8f98a4;
+      --line:        #242b33;
+      --line-soft:   #1c222a;
+      --accent:      #6fb6d6;
+      --accent-ink:  #8ec8e2;
+      --accent-soft: #16232b;
+      --focus:       #6fb6d6;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #0f1317;
+    --surface:     #151a20;
+    --ink:         #e5eaef;
+    --ink-soft:    #c3ccd5;
+    --muted:       #8f98a4;
+    --line:        #242b33;
+    --line-soft:   #1c222a;
+    --accent:      #6fb6d6;
+    --accent-ink:  #8ec8e2;
+    --accent-soft: #16232b;
+    --focus:       #6fb6d6;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-ink); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  p { margin: 0; }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0;
+    background: var(--surface); color: var(--ink);
+    padding: 10px 16px; z-index: 10; border: 1px solid var(--line);
+  }
+  .skip:focus { left: 12px; top: 12px; }
+
+  /* ---------- shell ---------- */
+
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px 96px;
+    display: grid;
+    grid-template-columns: 268px minmax(0, 1fr);
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* ---------- left rail ---------- */
+
+  .rail {
+    position: sticky;
+    top: 0;
+    padding: 72px 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.9rem;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .role {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    margin: 8px 0 0;
+    max-width: 24ch;
+  }
+
+  .status {
+    font-family: var(--mono);
+    font-size: 0.735rem;
+    line-height: 1.7;
+    color: var(--muted);
+    border-left: 2px solid var(--accent);
+    padding-left: 12px;
+  }
+  .status strong { color: var(--ink-soft); font-weight: 500; }
+
+  .rail-nav ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .rail-nav a {
+    font-family: var(--mono);
+    font-size: 0.755rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    padding: 3px 0 3px 20px;
+    position: relative;
+    transition: color 140ms ease;
+  }
+  .rail-nav a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 10px;
+    height: 1px;
+    background: var(--line);
+    transition: width 160ms ease, background-color 160ms ease;
+  }
+  .rail-nav a:hover { color: var(--ink); text-decoration: none; }
+  .rail-nav a[aria-current="true"] { color: var(--ink); }
+  .rail-nav a[aria-current="true"]::before { width: 14px; background: var(--accent); }
+
+  .rail-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.85rem;
+  }
+
+  /* ---------- content ---------- */
+
+  .content {
+    padding: 72px 0 0;
+    max-width: 660px;
+    display: flex;
+    flex-direction: column;
+    gap: 68px;
+  }
+
+  section { scroll-margin-top: 32px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 22px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    display: block;
+    font-weight: 400;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-size: 1.32rem;
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: -0.008em;
+    text-wrap: balance;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  /* ---------- timeline ---------- */
+
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 24px;
+    border-left: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+  .timeline > li { position: relative; }
+  .timeline > li::before {
+    content: "";
+    position: absolute;
+    left: -29px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ground);
+    border: 1px solid var(--line);
+  }
+  .timeline > li:first-child::before {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .when {
+    font-family: var(--mono);
+    font-size: 0.735rem;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 5px;
+  }
+  .job-title {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .org {
+    font-size: 0.87rem;
+    color: var(--muted);
+    margin: 2px 0 10px;
+  }
+  .job-note {
+    color: var(--ink-soft);
+    font-size: 0.945rem;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* ---------- projects ---------- */
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .project {
+    padding-top: 26px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .project:first-child { padding-top: 0; border-top: 0; }
+
+  .project h3 {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    letter-spacing: -0.005em;
+  }
+  .project-meta {
+    font-family: var(--mono);
+    font-size: 0.715rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 12px;
+  }
+  .project p.desc {
+    color: var(--ink-soft);
+    font-size: 0.955rem;
+    margin: 0 0 14px;
+    max-width: 60ch;
+  }
+
+  .outcomes {
+    list-style: none;
+    margin: 0 0 14px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .outcomes li {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    padding-left: 18px;
+    position: relative;
+    max-width: 60ch;
+  }
+  .outcomes li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 7px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .outcomes b {
+    font-weight: 600;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .outcomes code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    color: var(--ink);
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .stack span {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    background: var(--accent-soft);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  /* ---------- research ---------- */
+
+  .paper {
+    border-left: 2px solid var(--accent);
+    padding-left: 18px;
+  }
+  .paper .citation {
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    line-height: 1.5;
+    margin: 0 0 8px;
+    max-width: 58ch;
+  }
+  .paper .venue {
+    font-family: var(--mono);
+    font-size: 0.715rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 12px;
+  }
+
+  /* ---------- skills + education rows ---------- */
+
+  .rows {
+    display: grid;
+    grid-template-columns: 148px minmax(0, 1fr);
+    gap: 14px 20px;
+    align-items: baseline;
+  }
+  .rows dt {
+    font-family: var(--mono);
+    font-size: 0.715rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 2px;
+  }
+  .rows dd {
+    margin: 0;
+    font-size: 0.945rem;
+    color: var(--ink-soft);
+  }
+
+  .degree { margin-bottom: 22px; }
+  .degree:last-child { margin-bottom: 0; }
+  .degree h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 2px;
+  }
+  .degree .org { margin-bottom: 4px; }
+  .degree .detail { font-size: 0.9rem; color: var(--ink-soft); margin: 0; }
+
+  /* ---------- contact ---------- */
+
+  .contact-list {
+    display: grid;
+    grid-template-columns: 148px minmax(0, 1fr);
+    gap: 12px 20px;
+    align-items: baseline;
+    margin: 0;
+  }
+  .contact-list dt {
+    font-family: var(--mono);
+    font-size: 0.715rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .contact-list dd { margin: 0; font-size: 0.95rem; }
+  .contact-list .note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    display: block;
+  }
+
+  footer {
+    margin-top: 20px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 0.71rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 900px) {
+    .page {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      padding: 0 24px 72px;
+    }
+    .rail {
+      position: static;
+      padding: 56px 0 0;
+      gap: 22px;
+    }
+    .rail-nav { display: none; }
+    .content { padding-top: 48px; gap: 56px; max-width: none; }
+    .name { font-size: 1.75rem; }
+    .role { max-width: 46ch; }
+    .status { font-size: 0.76rem; }
+  }
+
+  @media (max-width: 560px) {
+    body { font-size: 15.5px; }
+    .rows, .contact-list { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .rows dt, .contact-list dt { padding-top: 10px; }
+    .lede { font-size: 1.18rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  }
+
+  html { scroll-behavior: smooth; }
+</style>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="page">
+
+  <header class="rail">
+    <div>
+      <h1 class="name">Raghav Bharadwaj</h1>
+      <p class="role">AI &amp; data engineer — four years building agentic systems that run in production.</p>
+    </div>
+
+    <p class="status">
+      <strong>Bengaluru, India</strong><br>
+      → <strong>London, UK</strong> from Sep 2026<br>
+      MSc AI and Medical Imaging, UCL
+    </p>
+
+    <nav class="rail-nav" aria-label="Sections">
+      <ol>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+
+    <div class="rail-contact">
+      <a href="mailto:raghhavbharadwaj@gmail.com">raghhavbharadwaj@gmail.com</a>
+      <a href="https://www.linkedin.com/in/raghhav-bharadwaj-204995192" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <main class="content" id="main">
+
+    <section id="about">
+      <h2 class="eyebrow">About</h2>
+      <div class="prose">
+        <p class="lede">I build the unglamorous layer that turns a generative-AI demo into a system an enterprise can actually depend on.</p>
+        <p>Since 2022 I have worked across the full path from prototype to production: agentic pipelines that map and restructure messy enterprise data, the FastAPI services that expose them, the CI/CD that ships them, and the load tests that prove they hold. Most of that work has been for large CPG and enterprise clients, where the measure of success is not a benchmark score but whether an analyst's week gets shorter.</p>
+        <p>My background is quantitative before it was computational — a chemical engineering degree from IIT Patna and a published stochastic-optimisation model. From September 2026 I am in London for an MSc in AI and Medical Imaging at UCL, pointing that systems experience at clinical problems.</p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="eyebrow">Experience</h2>
+      <ol class="timeline">
+        <li>
+          <span class="when">Jan 2026 — Present</span>
+          <h3 class="job-title">Lead, Data &amp; AI Labs</h3>
+          <p class="org">Tiger Analytics · Bengaluru</p>
+          <p class="job-note">Extending the agentic data structuring platform to nested and semi-structured formats, and adding LLM-guided recommendations that data modelling teams act on directly.</p>
+        </li>
+        <li>
+          <span class="when">Jul 2024 — Jan 2026</span>
+          <h3 class="job-title">Data Engineer</h3>
+          <p class="org">Tiger Analytics · Bengaluru</p>
+          <p class="job-note">Led the agentic data mapping and wrangling solution for a CPG client, and owned the eleven production FastAPI services that put it in front of users.</p>
+        </li>
+        <li>
+          <span class="when">Jul 2023 — Jul 2024</span>
+          <h3 class="job-title">Senior Software Engineer</h3>
+          <p class="org">Tiger Analytics · Bengaluru</p>
+          <p class="job-note">Built LogInsight — conversational Q&amp;A over log data, a historical analysis dashboard, and generative-AI insights drawn from error logs.</p>
+        </li>
+        <li>
+          <span class="when">Jan 2023 — Jul 2023</span>
+          <h3 class="job-title">Software Engineer</h3>
+          <p class="org">Tiger Analytics · Bengaluru</p>
+          <p class="job-note">Shipped Chat2Data and Chat2Viz for conversational querying and visualisation, plus FinOps dashboards for AWS cost and usage analysis.</p>
+        </li>
+        <li>
+          <span class="when">Jul 2022 — Jan 2023</span>
+          <h3 class="job-title">Analyst — Training Programme</h3>
+          <p class="org">Tiger Analytics · Bengaluru</p>
+          <p class="job-note">Structured training in Python, SQL and machine learning fundamentals.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="projects">
+      <h2 class="eyebrow">Selected work</h2>
+      <div class="projects">
+
+        <article class="project">
+          <h3>Agentic data structuring platform</h3>
+          <p class="project-meta">CPG client · 2024 — present · Lead developer</p>
+          <p class="desc">Enterprise data arrives inconsistent, deeply nested and undocumented, and mapping it to a usable schema is manual, slow work. I led development of an agentic system that reads the source, proposes the structure, and hands modelling teams a recommendation they can accept or correct.</p>
+          <ul class="outcomes">
+            <li>LangGraph architecture with in-memory vector stores cut manual data processing by <b>70%</b></li>
+            <li>Data consistency and accuracy improved <b>50%</b>, shortening stakeholder decision cycles</li>
+            <li>Extended to complex nested <code>.txt</code>, <code>.json</code> and <code>.csv</code> sources, widening coverage across enterprise systems</li>
+            <li>Shipped an interactive application so modelling teams review and act on recommendations in place</li>
+          </ul>
+          <div class="stack"><span>LangGraph</span><span>LangChain</span><span>Vector search</span><span>Python</span><span>Azure DevOps</span></div>
+        </article>
+
+        <article class="project">
+          <h3>Production API layer — 11 FastAPI microservices</h3>
+          <p class="project-meta">CPG client · 2024 — 2026 · Design, build, test</p>
+          <p class="desc">The agentic engine only mattered once client platforms could call it reliably. I designed and maintained the service layer around it, along with the HLD/LLD documentation, testing and release process that kept two major releases stable.</p>
+          <ul class="outcomes">
+            <li><b>11</b> production-grade services with versioning, OAuth 2.0, modular design, structured logging and exception handling</li>
+            <li>Two major releases delivered with high availability and seamless client integration</li>
+            <li>Functional and integration testing in Postman; concurrency and throughput validated with JMeter</li>
+            <li>Client satisfaction scores up <b>40%</b> on the back of stable delivery</li>
+          </ul>
+          <div class="stack"><span>FastAPI</span><span>OAuth 2.0</span><span>Postman</span><span>JMeter</span><span>CI/CD</span></div>
+        </article>
+
+        <article class="project">
+          <h3>LogInsight — conversational log analytics</h3>
+          <p class="project-meta">Log analytics platform · 2023 — 2024</p>
+          <p class="desc">Engineers were reading raw logs to find out what broke. LogInsight let them ask instead, and surfaced the answer with a suggested fix attached.</p>
+          <ul class="outcomes">
+            <li>Chat Q&amp;A over log data, so error context is retrieved by question rather than by grep</li>
+            <li>Streamlit dashboard for historical analysis and real-time operational trends</li>
+            <li>Active log monitoring reduced issue resolution time by <b>50%</b></li>
+            <li>Generative-AI layer that reads error logs and proposes remediation steps</li>
+          </ul>
+          <div class="stack"><span>Streamlit</span><span>LLM integration</span><span>Python</span><span>Semantic search</span></div>
+        </article>
+
+        <article class="project">
+          <h3>Chat2Data, Chat2Viz &amp; FinOps dashboards</h3>
+          <p class="project-meta">Internal products · 2023</p>
+          <p class="desc">An early pass at the same idea that runs through everything since: let people ask a question in plain language and get data — or a chart — back.</p>
+          <ul class="outcomes">
+            <li>Chat2Data for conversational querying, removing a manual extraction step</li>
+            <li>Chat2Viz generating interactive Plotly visualisations from natural-language input</li>
+            <li>FinOps dashboards analysing EC2 and AWS cost and usage for optimisation decisions</li>
+          </ul>
+          <div class="stack"><span>Plotly</span><span>AWS</span><span>SQL</span><span>Python</span></div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="research">
+      <h2 class="eyebrow">Research</h2>
+      <div class="paper">
+        <p class="venue">Chemical Engineering Transactions · Vol. 94 · 2022 · Peer-reviewed</p>
+        <p class="citation">Bharadwaj, R., &amp; Chaturvedi, N. D. — <em>Maximizing Profit Using Benders Decomposition in Two-Stage Stochastic Water Distribution Network</em>, 799–804.</p>
+        <p class="job-note">Built a two-stage stochastic optimisation model for water distribution under uncertainty and compared it against a Benders Decomposition formulation. Both reached identical optimal profit; the decomposed model reached it far more efficiently.</p>
+        <p style="margin-top:12px"><a href="https://doi.org/10.3303/CET2294133" target="_blank" rel="noopener">DOI: 10.3303/CET2294133 →</a></p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="eyebrow">Skills</h2>
+      <dl class="rows">
+        <dt>Languages</dt>
+        <dd>Python, SQL</dd>
+
+        <dt>AI &amp; agents</dt>
+        <dd>LangGraph, LangChain, agentic architectures, generative models (GPT, Llama, GANs, VAEs)</dd>
+
+        <dt>NLP</dt>
+        <dd>Semantic search, text generation, sentiment analysis</dd>
+
+        <dt>Services</dt>
+        <dd>FastAPI, OAuth 2.0, REST versioning, structured logging, microservice design</dd>
+
+        <dt>Data stores</dt>
+        <dd>Pinecone, FAISS, Azure SQL, MySQL, SQLite</dd>
+
+        <dt>Cloud &amp; data</dt>
+        <dd>Azure, GCP, Databricks, Azure DevOps CI/CD</dd>
+
+        <dt>Analysis</dt>
+        <dd>NumPy, Pandas, Plotly, Streamlit</dd>
+
+        <dt>Tooling</dt>
+        <dd>Git, Azure DevOps Repos, VS Code, Postman, JMeter</dd>
+
+        <dt>Spoken</dt>
+        <dd>English — IELTS 7.5 (C1 Academic) · German — beginner</dd>
+      </dl>
+    </section>
+
+    <section id="education">
+      <h2 class="eyebrow">Education</h2>
+
+      <div class="degree">
+        <span class="when">From Sep 2026</span>
+        <h3>MSc, Artificial Intelligence and Medical Imaging</h3>
+        <p class="org">University College London · London, UK</p>
+      </div>
+
+      <div class="degree">
+        <span class="when">2018 — 2022</span>
+        <h3>B.Tech, Chemical Engineering</h3>
+        <p class="org">Indian Institute of Technology Patna</p>
+        <p class="detail">CPI 7.93 / 10 · Degree conferred December 2022 · Final-year research led to a peer-reviewed publication</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="eyebrow">Contact</h2>
+      <dl class="contact-list">
+        <dt>Email</dt>
+        <dd><a href="mailto:raghhavbharadwaj@gmail.com">raghhavbharadwaj@gmail.com</a></dd>
+
+        <dt>LinkedIn</dt>
+        <dd><a href="https://www.linkedin.com/in/raghhav-bharadwaj-204995192" target="_blank" rel="noopener">raghhav-bharadwaj</a></dd>
+
+        <dt>Based in</dt>
+        <dd>Bengaluru, India — relocating to London, UK in September 2026</dd>
+
+        <!-- DEPLOY NOTE: to serve the CV directly, drop your PDF beside this file as cv.pdf
+             and replace the mailto link below with:
+             <a href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a> -->
+        <dt>CV</dt>
+        <dd>
+          <a href="mailto:raghhavbharadwaj@gmail.com?subject=CV%20request">Available on request</a>
+          <span class="note">Happy to send a PDF — just ask.</span>
+        </dd>
+      </dl>
+
+      <footer>Open to AI / data engineering roles in London from September 2026.</footer>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.rail-nav a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+
+    var visible = {};
+    var order = links.map(function (a) { return a.getAttribute('href').slice(1); });
+
+    function paint() {
+      var current = null;
+      for (var i = 0; i < order.length; i++) {
+        if (visible[order[i]]) { current = order[i]; break; }
+      }
+      links.forEach(function (a) {
+        var id = a.getAttribute('href').slice(1);
+        if (id === current) { a.setAttribute('aria-current', 'true'); }
+        else { a.removeAttribute('aria-current'); }
+      });
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+      paint();
+    }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
+
+    order.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  })();
+</script>
+</body>
+</html>
